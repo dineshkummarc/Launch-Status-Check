@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<!-- iPhone -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!-- /iPhone -->
+	<!-- IE -->
+	<meta name="application-name" content="Launch Status Check">
+	<meta name="msapplication-tooltip" content="">
+	<meta name="msapplication-starturl" content="/?iePinned=true">
+	<!-- /IE -->
+	<!-- Facebook -->
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:image" content="">
+	<!-- /Facebook -->
+	
+	<title>Launch Status Check</title>
+	
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+	<link rel="author" href="humans.txt">
+	<link rel="dns-prefetch" href="//ajax.googleapis.com">
+	
+	<link rel="stylesheet" href="css/style.css?v=1" type="text/css">
+	
+	<script src="js/modernizr-2.0.6.min.js"></script>
+</head>
+<body>
+	<header role="banner">
+		<h1>Launch Status Check</h1>
+	</header>
+
+	<div id="app" class="main" role="main">
+		<div id="create-item">
+			<input type="text" name="task" placeholder="Add task here.">
+			<input type="text" name="group" placeholder="Select group.">
+			<input type="submit" value="Add Task" class="add-task">
+		</div>
+		
+		<ul id="check-list"></ul>
+	</div>
+	
+	 <!-- templates -->	
+	<script type="text/template" id="item-template">
+		<li class="item">
+			<span class="description"><%= task %></span>
+		</li>
+    </script>
+    <!-- endtemplates -->
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<script>!window.jQuery && document.write('<script src="js/jquery-1.7.1.min.js"><\/script>')</script>
+	<script src="js/json2.js"></script>
+	<script src="js/underscore.js"></script>
+	<script src="js/backbone-min.js"></script>
+	<script src="js/backbone-localstorage.js"></script>
+	<script src="js/app.js"></script>
+	
+	<script>
+		var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+		g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+		s.parentNode.insertBefore(g,s)}(document,'script'));
+	</script>
+	<!--[if lt IE 7 ]>
+		<script defer src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+		<script defer>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+	<![endif]-->
+</body>
+</html>
