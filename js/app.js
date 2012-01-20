@@ -1,15 +1,27 @@
 $(function(){
-	var checkList = 'list'; // TODO: manage multiple lists
-
+	var checkList = 'list-one'; // TODO: manage multiple lists
+	
+	var List = Backbone.Model.extend({
+		initialize: function() {
+		
+		}
+	});
+	
+	var CheckLists = Backbone.Collection.extend({
+		model: List,
+		localStorage: new Store('lsc-lists')
+	});
+	var Lists = new CheckLists;
+	
 	var Item = Backbone.Model.extend({
 		initialize: function() {
 			
 		}
 	});
 	
-	var CheckList = Backbone.Collection.extend({
+	var CheckListItems = Backbone.Collection.extend({
 		model: Item,
-		localStorage: new Store('lsc-'+checkList),
+		localStorage: new Store('lsc-list-items'),
 		nextOrder: function() {
 			if (!this.length) return 1;
 			return this.last().get('order') + 1;
@@ -18,7 +30,7 @@ $(function(){
 			return item.get('order');
 		}
 	});
-	var Items = new CheckList;
+	var Items = new CheckListItems;
 	
 	var ItemView = Backbone.View.extend({
 		template: _.template($('#item-template').html()),
@@ -57,18 +69,16 @@ $(function(){
 		addAll: function() {
 			Items.each(this.addOne);
 		},
-		newAttributes: function() {		
-			return {
+		createTask: function(e) {
+			if (this.$('input[name="task"]').val() === "") return false;
+			Items.create({
 				task: this.$('input[name="task"]').val(),
 				group: this.$('input[name="group"]').val(),
 				order: Items.nextOrder(),
 				done: false
-			};
-		},
-		createTask: function(e) {
-			if (this.$('input[name="task"]').val() === "") return false;
-			Items.create(this.newAttributes());
-			this.$('input[name="task"]').val('')
+			});
+			this.$('input[name="task"]').val('');
+			this.$('input[name="group"]').val('');
 		}
 	});
 	
